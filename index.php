@@ -38,13 +38,16 @@
         $to = $_POST["email"];
         $name = $_POST["name"];
         $subject = "Details for chat group";
-        $message = "Hi $name , I welcome you to the easter chat group 
-        At 12:00 in the afternoon at easter sunday please open this link https://chat-website-byan.herokuapp.com/ and type the room as 13568924681";
+        $message = "Hi $name , I welcome you to the easter chat group At 12:00 in the afternoon at easter sunday please open this link https://chat-website-byan.herokuapp.com/ and type the room as 13568924681";
         $header = "From: josephbryan@gmail.com";
 
 
         mysqli_query($link,"insert into echat (fullname,email) values ('$_POST[name]','$_POST[email]')") or die(mysqli_error($link));
-        mail($to,$subject,$message,$header) or die(mysqli_error($link));
+        if ( mail($to,$subject,$message,$header)) {
+            echo "succecsess";
+        }else{
+            echo "fail";
+        }
             
     }
 ?>
