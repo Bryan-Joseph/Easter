@@ -43,7 +43,7 @@
 
 
         mysqli_query($link,"insert into echat (fullname,email) values ('$_POST[name]','$_POST[email]')") or die(mysqli_error($link));
-        if ( mail($to,$subject,$message,$header)) {
+        if ( mail($to,$subject,$message,$header)or die(mysqli_error($link))) {
             echo "succecsess";
         }else{
             echo "fail";
